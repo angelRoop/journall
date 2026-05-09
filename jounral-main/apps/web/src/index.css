@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --success: 142 72% 29%;
+    --success-foreground: 210 40% 98%;
+    --radius: 0.75rem;
+    
+    /* Custom properties for image upload and charts */
+    --upload-bg: 210 40% 96%;
+    --upload-border: 214 32% 91%;
+    --upload-hover: 210 40% 92%;
+    --chart-win: 142 72% 29%;
+    --chart-loss: 0 84% 60%;
+    --chart-flat: 215 16% 47%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 76% 48%;
+    --primary: 224 76% 48%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --success: 142 72% 29%;
+    --success-foreground: 210 40% 98%;
+
+    /* Custom properties for image upload and charts */
+    --upload-bg: 217 33% 17%;
+    --upload-border: 215 20% 25%;
+    --upload-hover: 217 33% 22%;
+    --chart-win: 142 72% 35%;
+    --chart-loss: 0 62% 45%;
+    --chart-flat: 215 20% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: clip;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-lg;
+  }
+  .glass-panel {
+    @apply bg-background/80 backdrop-blur-xl border-b border-border/50;
+  }
+  
+  /* Upload Zone Styles */
+  .upload-zone {
+    @apply relative flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-xl transition-all duration-200 cursor-pointer overflow-hidden;
+    background-color: hsl(var(--upload-bg));
+    border-color: hsl(var(--upload-border));
+  }
+  .upload-zone:hover, .upload-zone[data-dragging="true"] {
+    background-color: hsl(var(--upload-hover));
+    border-color: hsl(var(--primary) / 0.5);
+  }
+  .upload-preview {
+    @apply absolute inset-0 w-full h-full object-cover object-center;
+  }
+  .upload-overlay {
+    @apply absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-200 flex items-center justify-center gap-2;
+  }
+  .upload-zone:hover .upload-overlay {
+    @apply opacity-100;
+  }
+}
