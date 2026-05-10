@@ -1,0 +1,26 @@
+[build]
+  base = "jounral-main"
+  publish = "dist/apps/web"
+  command = "cd apps/web && npm run build"
+
+[build.environment]
+  NODE_ENV = "production"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-api-domain.com/:splat"
+  status = 200
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
