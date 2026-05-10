@@ -1,0 +1,28 @@
+# Trading Journal
+
+A web application for logging, tracking, and analyzing trades. Users can record trade details including symbols, entry/exit points, emotions, tags, and session notes, then review statistics and performance over time.
+
+## Pages
+
+- AddTrade
+- Dashboard
+- Home
+- Login
+- Signup
+- Statistics
+
+## Features
+
+- Trade entry with symbol, direction, entry/exit price, quantity, and PnL
+- Emotional state tracking per trade
+- Tagging system for categorizing trades
+- Dashboard with trade history and live summary
+- Statistics page with charts and symbol-level analysis
+- User authentication via Supabase
+
+## Technology
+
+- React 18 with Vite
+- Tailwind CSS with shadcn/ui components
+- Supabase for authentication and data persistence
+- Recharts for data visualization
