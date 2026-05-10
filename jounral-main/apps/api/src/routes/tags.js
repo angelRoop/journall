@@ -36,4 +36,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:tagId', async (req, res) => {
+  try {
+    const tag = await Tag.findOneAndDelete({ 
+      _id: req.params.tagId, 
+      userId: req.user.id 
+    });
+    
+    if (!tag) {
+      return res.status(404).json({ message: 'Tag not found' });
+    }
+    
+    res.json({ message: 'Tag deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to delete tag' });
+  }
+});
+
 export default router;

@@ -11,6 +11,8 @@ const tradeSchema = new mongoose.Schema({
   optionType: String,
   expiryDate: String,
   direction: String,
+  directionCorrect: Boolean,
+  analysisCorrect: Boolean,
   quantity: Number,
   entryPrice: Number,
   exitPrice: Number,
