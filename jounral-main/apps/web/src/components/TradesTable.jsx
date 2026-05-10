@@ -34,6 +34,8 @@ const TradesTable = ({ trades, onPreviewImages, onPreviewNotes }) => {
               <TableHead className="text-center font-semibold">Status</TableHead>
               <TableHead className="text-right font-semibold">R:R</TableHead>
               <TableHead className="text-center font-semibold">Market</TableHead>
+              <TableHead className="text-center font-semibold">Dir ✓</TableHead>
+              <TableHead className="text-center font-semibold">Analysis ✓</TableHead>
               <TableHead className="text-center font-semibold">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -76,6 +78,24 @@ const TradesTable = ({ trades, onPreviewImages, onPreviewNotes }) => {
                   </TableCell>
                   <TableCell className="text-center text-sm text-muted-foreground">
                     {trade.marketCondition || '-'}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {trade.directionCorrect === true ? (
+                      <Badge variant="default" className="bg-green-600 hover:bg-green-700">✓</Badge>
+                    ) : trade.directionCorrect === false ? (
+                      <Badge variant="destructive">✗</Badge>
+                    ) : (
+                      <span className="text-muted-foreground text-sm">-</span>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {trade.analysisCorrect === true ? (
+                      <Badge variant="default" className="bg-green-600 hover:bg-green-700">✓</Badge>
+                    ) : trade.analysisCorrect === false ? (
+                      <Badge variant="destructive">✗</Badge>
+                    ) : (
+                      <span className="text-muted-foreground text-sm">-</span>
+                    )}
                   </TableCell>
                   <TableCell className="text-center">
                     <div className="inline-flex items-center justify-center gap-2">

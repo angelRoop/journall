@@ -18,6 +18,7 @@ import {
   PositionDetailsSection,
   RiskManagementSection,
   ExecutionQualitySection,
+  TradeValidationSection,
   PsychologySection,
   TradeReviewSection,
 } from '@/components/TradeFormSections.jsx';
@@ -296,6 +297,11 @@ const AddTradePage = () => {
                 <Card className="glass-card overflow-hidden">
                   <CardHeader className="bg-muted/30 border-b pb-4"><CardTitle>Execution Quality</CardTitle></CardHeader>
                   <CardContent className="pt-6"><ExecutionQualitySection formData={formData} updateField={updateField} /></CardContent>
+                </Card>
+
+                <Card className="glass-card overflow-hidden">
+                  <CardHeader className="bg-muted/30 border-b pb-4"><CardTitle>Trade Validation</CardTitle></CardHeader>
+                  <CardContent className="pt-6"><TradeValidationSection formData={formData} updateField={updateField} /></CardContent>
                 </Card>
 
                 <Card className="glass-card overflow-hidden">

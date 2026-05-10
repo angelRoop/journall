@@ -12,6 +12,8 @@ create table if not exists public.trades (
   optionType text,
   expiryDate timestamptz,
   direction text,
+  directionCorrect boolean,
+  analysisCorrect boolean,
   quantity numeric,
   entryPrice numeric,
   exitPrice numeric,
@@ -85,6 +87,8 @@ alter table if exists public.trades add column if not exists strikePrice numeric
 alter table if exists public.trades add column if not exists optionType text;
 alter table if exists public.trades add column if not exists expiryDate timestamptz;
 alter table if exists public.trades add column if not exists direction text;
+alter table if exists public.trades add column if not exists directionCorrect boolean;
+alter table if exists public.trades add column if not exists analysisCorrect boolean;
 alter table if exists public.trades add column if not exists quantity numeric;
 alter table if exists public.trades add column if not exists entryPrice numeric;
 alter table if exists public.trades add column if not exists exitPrice numeric;

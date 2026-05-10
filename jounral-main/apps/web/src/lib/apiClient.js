@@ -17,6 +17,8 @@ const tradeFields = [
   'optionType',
   'expiryDate',
   'direction',
+  'directionCorrect',
+  'analysisCorrect',
   'quantity',
   'entryPrice',
   'exitPrice',
@@ -273,6 +275,16 @@ export const createTag = async (name) => {
 
   handleSupabaseError(error);
   return toClientRow(data, tagDbToClientMap);
+};
+
+export const deleteTag = async (tagId) => {
+  const { error } = await supabase
+    .from('tags')
+    .delete()
+    .eq('id', tagId);
+
+  handleSupabaseError(error);
+  return { message: 'Tag deleted successfully' };
 };
 
 export const saveTemplate = async (templateName, templateData) => {

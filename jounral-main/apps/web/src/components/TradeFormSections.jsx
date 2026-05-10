@@ -68,12 +68,16 @@ export const InstrumentDetailsSection = ({ formData, updateField, errors = {} })
     </div>
     <div className="space-y-2">
       <Label>Symbol <span className="text-destructive">*</span></Label>
-      <Input 
-        value={formData.symbol} 
-        onChange={(e) => updateField('symbol', e.target.value)} 
-        placeholder="e.g. AAPL, NIFTY" 
-        className={errors.symbol ? 'border-destructive' : ''}
-      />
+      <Select value={formData.symbol} onValueChange={(v) => updateField('symbol', v)}>
+        <SelectTrigger className={errors.symbol ? 'border-destructive' : ''}>
+          <SelectValue placeholder="Select symbol" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="SENSEX">SENSEX</SelectItem>
+          <SelectItem value="N50">N50</SelectItem>
+          <SelectItem value="BANKNIFTY">BANKNIFTY</SelectItem>
+        </SelectContent>
+      </Select>
       {errors.symbol && <p className="text-sm text-destructive">{errors.symbol}</p>}
     </div>
     {formData.marketType === 'Options' && (
@@ -210,6 +214,48 @@ export const ExecutionQualitySection = ({ formData, updateField }) => (
       <div className="flex items-center space-x-2">
         <Checkbox id="revengeTrade" checked={formData.revengeTrade} onCheckedChange={(c) => updateField('revengeTrade', c)} />
         <Label htmlFor="revengeTrade">Revenge Trade</Label>
+      </div>
+    </div>
+  </div>
+);
+
+export const TradeValidationSection = ({ formData, updateField }) => (
+  <div className="space-y-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="space-y-3">
+        <Label>Was your direction correct?</Label>
+        <RadioGroup value={formData.directionCorrect === null ? '' : formData.directionCorrect ? 'yes' : 'no'} onValueChange={(v) => updateField('directionCorrect', v === 'yes' ? true : v === 'no' ? false : null)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="yes" id="directionYes" />
+            <Label htmlFor="directionYes" className="cursor-pointer font-normal">✓ Correct - Direction was right</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="no" id="directionNo" />
+            <Label htmlFor="directionNo" className="cursor-pointer font-normal">✗ Wrong - Direction was incorrect</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="partial" id="directionPartial" />
+            <Label htmlFor="directionPartial" className="cursor-pointer font-normal">~ Partial - Partially correct</Label>
+          </div>
+        </RadioGroup>
+      </div>
+
+      <div className="space-y-3">
+        <Label>Was your analysis correct?</Label>
+        <RadioGroup value={formData.analysisCorrect === null ? '' : formData.analysisCorrect ? 'yes' : 'no'} onValueChange={(v) => updateField('analysisCorrect', v === 'yes' ? true : v === 'no' ? false : null)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="yes" id="analysisYes" />
+            <Label htmlFor="analysisYes" className="cursor-pointer font-normal">✓ Correct - Analysis was right</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="no" id="analysisNo" />
+            <Label htmlFor="analysisNo" className="cursor-pointer font-normal">✗ Wrong - Analysis was incorrect</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="partial" id="analysisPartial" />
+            <Label htmlFor="analysisPartial" className="cursor-pointer font-normal">~ Partial - Partially correct</Label>
+          </div>
+        </RadioGroup>
       </div>
     </div>
   </div>
